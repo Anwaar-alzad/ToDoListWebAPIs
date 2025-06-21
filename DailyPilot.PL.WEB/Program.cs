@@ -2,6 +2,8 @@ using DailyPilot.DAL.Context;
 using DailyPilot.DAL.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+
 
 namespace DailyPilot.PL.WEB
 {
@@ -14,15 +16,19 @@ namespace DailyPilot.PL.WEB
             options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-            .AddEntityFrameworkStores<ApplicationDbContext>();
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
+
+
+            builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
 
 
-         
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddControllers();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -46,5 +52,7 @@ namespace DailyPilot.PL.WEB
 
             app.Run();
         }
+
+   
     }
 }

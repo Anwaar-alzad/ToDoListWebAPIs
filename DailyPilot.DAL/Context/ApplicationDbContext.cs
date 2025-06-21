@@ -26,10 +26,7 @@ namespace DailyPilot.DAL.Context
         }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Todo> Todos { get; set; }
-        //    public DbSet<IdentityRole> Roles { get; set; }
-        //    public DbSet<IdentityUserRole<string>> UserRoles { get; set; }
-        //    public DbSet<IdentityUserClaim<string>> UserClaims { get; set; }
-        //    public DbSet<IdentityUserLogin<string>> UserLogins { get; set; }
+
    
     }
 }

@@ -13,7 +13,12 @@ namespace DailyPilot.BLL.Mappings
     {
         public AutoMapperProfile()
         {
-            CreateMap<ApplicationUser, RegisterDto>().ReverseMap();
+            CreateMap<ApplicationUser, UserCreateDto>()
+                .ForMember(dest => dest.FirstName, opt => opt.MapFrom(src => src.FirstName))
+                .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Email))
+                .ReverseMap();
+
+            CreateMap<Category, CategoryDto>().ReverseMap();
         }
     }
    
